@@ -44,3 +44,11 @@ exports.speak = function (text, onfulfilled, onrejected) {
 
     return promise;
 };
+
+exports.stop = function () {
+    cordova.exec(function () {
+
+    }, function() {
+
+    }, 'TTS', 'stop', []);
+};
