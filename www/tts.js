@@ -53,10 +53,10 @@ exports.stop = function () {
     }, 'TTS', 'stop', []);
 };
 
-exports.getDefaultEngine = function () {
+exports.getDefaultEngine = function (success, error) {
     cordova.exec(function (name) {
-
-    }, function(error) {
-
+        success(name);
+    }, function(err) {
+        error(err);
     }, 'TTS', 'getDefaultEngine', []);
 };
