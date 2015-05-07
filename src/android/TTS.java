@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.speech.tts.UtteranceProgressListener;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -67,11 +68,14 @@ public class TTS extends CordovaPlugin implements OnInitListener {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext)
             throws JSONException {
-        if (action.equals("speak")) {
+        if (action.equals("speak")) {       
             speak(args, callbackContext);
         } else if (action.equals("stop")) {
             tts.stop();
-        } else {
+        }
+        else if (action.equals("getDefaultEngine")) {
+        	callbackContext.success(tts.getDefaultEngine());
+        }else {
             return false;
         }
         return true;
